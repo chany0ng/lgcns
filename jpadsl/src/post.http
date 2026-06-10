@@ -1,0 +1,73 @@
+@baseUrl=http://localhost:8080/api/posts
+
+### foldername
+GET {{baseUrl}}/foldername
+
+### posts list (/api/posts)
+GET {{baseUrl}}
+
+### posts paging (/api/posts)
+GET {{baseUrl}}?page=3
+
+### search
+GET {{baseUrl}}/search?title=New&body=
+
+
+### create post
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "title": "Module 6 Test",
+  "writer": "박찬용",
+  "body": {
+    "body": "Module 6 Text body"
+  },
+  "hashtags": [
+    {
+      "tag": "spring"
+    }
+  ]
+}
+
+### edit post
+PUT {{baseUrl}}/1
+Content-Type: application/json
+
+{
+  "title": "(New)Module 6 Test",
+  "writer": "(New)박찬용",
+  "body" : {
+    "body": "(New) body"
+  }
+}
+
+### post detail
+GET {{baseUrl}}/1
+
+### post remove
+DELETE {{baseUrl}}/2
+
+### create reply
+POST {{baseUrl}}/125/replies
+Content-Type: application/json
+
+{
+  "reply": "댓글...",
+  "replier": "김일수"
+}
+
+### get reply
+GET {{baseUrl}}/125/replies
+
+### edit reply
+PUT {{baseUrl}}/125/replies/1
+Content-Type: application/json
+
+{
+  "reply": "댓글22..",
+  "replier": "작성자22"
+}
+
+### remove reply
+DELETE {{baseUrl}}/125/replies/1

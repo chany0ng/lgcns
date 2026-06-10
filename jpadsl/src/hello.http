@@ -1,0 +1,7 @@
+@baseUrl=http://localhost:8080
+
+### hello
+GET {{baseUrl}}/hello
+
+### say-hello
+GET {{baseUrl}}/say-hello

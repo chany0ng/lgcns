@@ -1,0 +1,41 @@
+# $schema: https://json.schemastore.org/spring-boot-application.json
+#server:
+#  port: 8089
+
+spring:
+  application:
+    name: jpadsl
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3308/userdb?serverTimezone=Asia/Seoul&characterEncoding=UTF-8
+    username: testuser
+    password: Test!!user
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    defer-datasource-initialization: false
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+          time_zone: Asia/Seoul
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+        use_sql_comments: true
+  sql:
+    init:
+      mode: never # always, never
+  
+  flyway:
+    enabled: false
+    baseline-on-migrate: true
+
+#  threads:
+#    virtual:
+#      enabled: true

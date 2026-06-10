@@ -1,0 +1,51 @@
+# $schema: https://json.schemastore.org/spring-boot-application.json
+spring:
+  config:
+    import: classpath:security.yml
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+          time_zone: Asia/Seoul
+        order_inserts: true
+        order_updates: true
+        format_sql: true
+        use_sql_comments: true
+
+  batch:
+    jdbc:
+      initialize-schema: always  # 자동 생성 (운영에선 never 권장)
+    job:
+      enabled: false  # 앱 시작 시 자동 실행 방지 (cmd에서 실행시 true로 해야 됨!)
+
+management:
+  server:
+    port: 9001
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: env,beans
+  endpoint:
+    metrics:
+      access: read_only
+    shutdown:
+      access: unrestricted
+    health:
+      show-details: always
+
+springdoc:
+  swagger-ui:
+    enabled: true
+    path: /swagger.html
+    url: /pipeline/api-docs
+  api-docs:
+    enabled: true
+    path: /pipeline/api-docs

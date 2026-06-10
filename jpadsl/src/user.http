@@ -1,0 +1,27 @@
+@baseUrl=http://localhost:8080/api/users
+
+### regist
+POST {{baseUrl}}
+Content-Type: application/json
+
+{
+  "email": "hong11@email.com",
+  "nickname": "홍길동",
+  "passwd": "password",
+  "bloodType": "O"
+}
+    
+### user detail
+GET {{baseUrl}}/4
+
+### edit user
+PUT {{baseUrl}}/4
+Content-Type: application/json
+
+{
+  "nickname": "김길동",
+  "bloodType": "AB"
+}
+
+### delete user
+DELETE {{baseUrl}}/3
